@@ -136,7 +136,7 @@ namespace NzbDrone.Core.Notifications
 
         internal static bool ShouldTriggerOnReleaseImport(NotificationDefinition definition)
         {
-            return definition.OnReleaseImport;
+            return definition.OnReleaseImport || definition.OnUpgrade;
         }
 
         internal static bool ShouldTriggerOnRename(NotificationDefinition definition)

@@ -61,5 +61,18 @@ namespace Chaptarr.Core.Test.Notifications
             Assert.That(NotificationFactory.ShouldTriggerOnRename(definition), Is.False);
             Assert.That(NotificationFactory.ShouldTriggerOnBookFileDelete(definition), Is.False);
         }
+
+        [Test]
+        public void should_trigger_release_import_for_upgrade_only_notifications()
+        {
+            var definition = new NotificationDefinition
+            {
+                Implementation = "Webhook",
+                OnReleaseImport = false,
+                OnUpgrade = true
+            };
+
+            Assert.That(NotificationFactory.ShouldTriggerOnReleaseImport(definition), Is.True);
+        }
     }
 }
